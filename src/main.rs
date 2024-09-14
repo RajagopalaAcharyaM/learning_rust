@@ -1,4 +1,4 @@
-fn first_word(string: &String) -> &str {
+fn first_word(string: &str) -> &str {
     let bytes = string.as_bytes();
 
     for (i, &item) in bytes.iter().enumerate(){
@@ -11,7 +11,7 @@ fn first_word(string: &String) -> &str {
 }
 
 fn main() {
-    let s = String::from("My name is Raj");
+    let s = String::from("Rajagopala Acharya");
     let first_word = first_word(&s);
     println!("{first_word}");
 }
