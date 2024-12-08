@@ -10,17 +10,22 @@ fn assign_rectangle(length: i32, width: i32) -> Rectangle {
     }
 }
 
-fn find_area (rectangle: &Rectangle) -> i32 {
-    let area = rectangle.length * rectangle.width;
-    return area;
+impl Rectangle {
+    fn area(&self) -> i32 {
+        self.width * self.length
+    }
+
+    fn can_hold(&self, rect: &Rectangle) -> bool {
+        self.width > rect.width && self.length > rect.length
+    }
 }
 
 fn main () {
-    let length: i32 = 34;
-    let width: i32 = 45;
-    let rectangle1 = assign_rectangle(length, width);
-    let area_of_rectangle = find_area(&rectangle1);
-    println!("The length and the width of the recatngle are {}, {}", rectangle1.length, rectangle1.width);
-    println!("The area of the rectangle are {}", area_of_rectangle);
-    println!("{}", length);
+    let rectangle1 = assign_rectangle(13, 20);
+    let rectangle2: Rectangle = assign_rectangle(9, 10);
+    
+    println!("The area of rectanlge 1 is: {}", rectangle1.area());
+    println!("The area of rectangle 2 is: {}", rectangle2.area());
+
+    println!("{}", rectangle1.can_hold(&rectangle2));
 }
